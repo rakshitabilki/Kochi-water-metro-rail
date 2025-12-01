@@ -1,0 +1,12 @@
+<!-- depot/templates/depot/upload_jobcards.html -->
+{% extends "depot/base.html" %}
+{% block content %}
+<h2>Upload JobCards CSV</h2>
+<p>Expected CSV columns: trainset, id, status, desc</p>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">Upload</button>
+</form>
+{% endblock %}

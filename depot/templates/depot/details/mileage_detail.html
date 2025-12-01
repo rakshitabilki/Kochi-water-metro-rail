@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Mileage - {{ train.number }}</title></head>
+<body>
+    <link rel="stylesheet" href="{% static 'depot/css/detail.css' %}">
+
+  <a href="{% url 'depot:branding_detail' train.number %}">← Branding</a> |
+  <a href="{% url 'depot:dashboard' %}">Dashboard</a>
+
+  <h2>Mileage — {{ train.number }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save & Continue → Cleaning</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <title>Know Your Journey - Kochi Water Metro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'home/css/journey.css' %}">
+</head>
+
+<body>
+
+<!-- 🔵 BEGIN BACKGROUND IMAGE WRAPPER -->
+<div class="journey-bg">
+
+<a href="{% url 'home:index' %}" class="back-link">← Back to Home</a>
+
+<section class="highlights">
+  <h2>Key Terminals</h2>
+
+  <div class="terminal-grid">
+    <div class="terminal" onclick="window.location.href='/terminal/Vytilla/'">Vytilla</div>
+<div class="terminal" onclick="window.location.href='/terminal/High Court/'">High Court</div>
+<div class="terminal" onclick="window.location.href='/terminal/Vypin/'">Vypin</div>
+<div class="terminal" onclick="window.location.href='/terminal/Kakkanad/'">Kakkanad</div>
+<div class="terminal" onclick="window.location.href='/terminal/South Chittoor/'">South Chittoor</div>
+<div class="terminal" onclick="window.location.href='/terminal/Cheranalloor/'">Cheranalloor</div>
+<div class="terminal" onclick="window.location.href='/terminal/Eloor/'">Eloor</div>
+<div class="terminal" onclick="window.location.href='/terminal/Fort Kochi/'">Fort Kochi</div>
+<div class="terminal" onclick="window.location.href='/terminal/Willingdon Island/'">Willingdon Island</div>
+<div class="terminal" onclick="window.location.href='/terminal/Mattancherry/'">Mattancherry</div>
+
+  </div>
+</section>
+
+<h1>Know Your Journey</h1>
+
+<div class="main-flex">
+
+  <!-- LEFT SECTION -->
+  <div class="sidebar">
+    <form id="journeyForm" novalidate>
+      <label for="source">Source</label>
+      <select id="source" required>
+        <option value="" disabled selected>Select source</option>
+      </select>
+
+      <label for="destination">Destination</label>
+      <select id="destination" required>
+        <option value="" disabled selected>Select destination</option>
+      </select>
+
+      <button type="submit">Show Route & Fare</button>
+    </form>
+
+    <a href="{% url 'home:book_ticket' %}" class="book-ticket-btn">
+    Book Ticket
+</a>
+    <div id="result" style="display:none;">
+      <h3>Route</h3>
+      <ul class="route-list" id="routeList"></ul>
+      <h3 id="fareDisplay"></h3>
+    </div>
+  </div>
+
+  <!-- RIGHT MAP -->
+  <div class="map-outer">
+    <div id="map"></div>
+  </div>
+
+</div>
+
+</div>
+
+
+
+<!-- 🔵 END BACKGROUND IMAGE WRAPPER -->
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{% static 'home/js/journey.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ name }} Terminal - Kochi Water Metro</title>
+
+  <!-- LINKED CSS FILE -->
+  <link rel="stylesheet" href="{% static 'home/css/terminal_detail.css' %}">
+</head>
+
+<body>
+
+<a href="{% url 'home:journey' %}" class="back">← Back to Journey</a>
+
+<div class="container">
+    <h1>{{ name }}</h1>
+    <h2>Nearby Attractions</h2>
+
+    <!-- ⭐ FIRST: IMAGE -->
+    <img src="{% static image %}" alt="{{ name }}">
+
+    <!-- ⭐ SECOND: DESCRIPTION -->
+    <p class="terminal-description">
+        {{ description }}
+    </p>
+
+    <!-- ⭐ THIRD: BULLET POINTS -->
+    <ul class="terminal-points">
+        {% for point in points %}
+            <li>{{ point }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+</body>
+</html>

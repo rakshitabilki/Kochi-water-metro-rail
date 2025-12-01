@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Ticket</title>
+</head>
+<body style="background-color: #e4f3ff;">
+
+    <div style="max-width: 1000px; margin: 40px auto; display: flex; gap: 20px;">
+
+        <!-- LEFT: FORM -->
+        <div style="flex: 1; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; margin-bottom: 20px;">Book Your Ticket</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.source.label_tag }}
+                    {{ form.source }}
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.destination.label_tag }}
+                    {{ form.destination }}
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.journey_date.label_tag }}
+                    {{ form.journey_date }}
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.passenger_name.label_tag }}
+                    {{ form.passenger_name }}
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.passenger_phone.label_tag }}
+                    {{ form.passenger_phone }}
+                </div>
+
+                <div class="form-group" style="margin-bottom: 15px;">
+                    {{ form.no_of_tickets.label_tag }}
+                    {{ form.no_of_tickets }}
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 10px; border:none; border-radius: 8px; background:#0d6efd; color:white; font-size:16px;">
+                    Book Ticket
+                </button>
+            </form>
+
+            <div style="text-align:center; margin-top: 15px;">
+                <a href="{% url 'home:journey' %}">← Back to Know Your Journey</a><br>
+                <a href="{% url 'home:my_bookings' %}" style="display:inline-block; margin-top:8px;">
+                    View / Cancel Previous Bookings
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT: BOOKING SUMMARY -->
+        <div style="flex: 1; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; margin-bottom: 20px;">Booking Details</h2>
+
+            {% if booking %}
+                <p><strong>Name:</strong> {{ booking.passenger_name }}</p>
+                <p><strong>Passenger Phone:</strong> {{ booking.passenger_phone }}</p>
+                <p><strong>Source:</strong> {{ booking.source }}</p>
+                <p><strong>Destination:</strong> {{ booking.destination }}</p>
+                <p><strong>Journey Date:</strong> {{ booking.journey_date }}</p>
+                <p><strong>Number of Tickets:</strong> {{ booking.no_of_tickets }}</p>
+                <p><strong>Status:</strong> {{ booking.status }}</p>
+                <p><strong>Booked At:</strong> {{ booking.created_at }}</p>
+            {% else %}
+                <p>No booking yet. Fill the form and click “Book Ticket” to see your ticket details here.</p>
+            {% endif %}
+        </div>
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+
+
+    </div>
+
+</body>
+</html>

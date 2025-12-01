@@ -1,0 +1,166 @@
+/* -------------------------------------------------
+   GLOBAL PAGE STYLING
+---------------------------------------------------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #d9ecff, #e4ffee);
+    color: #1a2a40;
+}
+
+/* Page Heading */
+h1, h2 {
+    text-align: center;
+    margin-top: 25px;
+    color: #144670;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Back Button */
+.back-btn {
+    margin: 20px;
+    padding: 10px 18px;
+    background: #155a96;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #0f4170;
+}
+
+/* -------------------------------------------------
+   SWIPE CARDS
+---------------------------------------------------*/
+.card-swiper-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px auto;
+    width: 85%;
+}
+
+.swipe-btn {
+    background: #155a96;
+    color: white;
+    border: none;
+    padding: 14px 18px;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.swipe-btn:hover {
+    background: #0e4575;
+}
+
+.card-swiper {
+    width: 65%;
+    min-height: 210px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Individual Card */
+.cleaning-card {
+    width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.4s ease-in-out;
+    display: none; 
+}
+
+.cleaning-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 22px;
+    color: #155a96;
+}
+
+.cleaning-card p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #2c445c;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------------------------
+   CLEANING TABLE
+---------------------------------------------------*/
+#slotsTableWrapper {
+    width: 90%;
+    margin: 35px auto 60px auto;
+}
+
+.slot-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.slot-table th {
+    background: #155a96;
+    color: white;
+    padding: 14px;
+    font-size: 15px;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.slot-table td {
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #e6e6e6;
+    color: #294059;
+}
+
+/* Hover Effect */
+.slot-table tr:hover {
+    background: #eef7ff;
+}
+
+/* -------------------------------------------------
+   RESPONSIVE DESIGN
+---------------------------------------------------*/
+@media (max-width: 900px) {
+    .card-swiper {
+        width: 90%;
+    }
+
+    .cleaning-card {
+        padding: 20px;
+    }
+
+    .card-swiper-container {
+        gap: 10px;
+    }
+
+    .swipe-btn {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .slot-table th,
+    .slot-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+</head>
+<body style="background:#e4f3ff;">
+    <div style="max-width:900px;margin:40px auto;background:white;padding:25px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+        <h2 style="margin-bottom:20px;">My Bookings</h2>
+
+        {% if bookings %}
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">ID</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Name</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Route</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Date</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Tickets</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Status</th>
+                        <th style="border-bottom:1px solid #ccc;padding:8px;text-align:left;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in bookings %}
+                        <tr>
+                            <td style="padding:8px;">{{ b.id }}</td>
+                            <td style="padding:8px;">{{ b.passenger_name }}</td>
+                            <td style="padding:8px;">{{ b.source }} → {{ b.destination }}</td>
+                            <td style="padding:8px;">{{ b.journey_date }}</td>
+                            <td style="padding:8px;">{{ b.no_of_tickets }}</td>
+                            <td style="padding:8px;">
+                                {% if b.status == "CANCELLED" %}
+                                    <span style="color:red;">Cancelled</span>
+                                {% else %}
+                                    <span style="color:green;">Active</span>
+                                {% endif %}
+                            </td>
+                            <td style="padding:8px;">
+                                {% if b.status == "ACTIVE" %}
+                                    <form method="post" action="{% url 'home:cancel_booking' b.id %}" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" style="padding:5px 10px;border:none;border-radius:5px;background:#dc3545;color:white;cursor:pointer;">
+                                            Cancel
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No bookings yet.</p>
+        {% endif %}
+
+        <div style="margin-top:20px;">
+            <a href="{% url 'home:book_ticket' %}">← Back to Book Ticket</a>
+        </div>
+        {% load static %}
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+    </div>
+</body>
+</html>

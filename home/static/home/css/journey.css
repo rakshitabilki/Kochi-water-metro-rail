@@ -1,0 +1,252 @@
+/* -------------------------------
+   PAGE BACKGROUND & GLOBAL STYLES
+---------------------------------*/
+body {
+  min-height: 100vh;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  background: #e1f1fd;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CLEAN STATIC WATER BACKGROUND */
+
+.journey-section {
+  background: url("https://i.imgur.com/nha1d0U.jpg") center/cover no-repeat fixed;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* --- Animated Gradient Blobs (kept as you added earlier) --- */
+.animated-bg-blobs {
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+}
+.animated-bg-blobs .blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.39;
+  filter: blur(27px);
+  mix-blend-mode: lighten;
+  animation: moveBlob 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.animated-bg-blobs .blob1 {
+  width: 470px; height: 470px;
+  background: radial-gradient(circle, #4fc3f7 70%, #0694d9 100%);
+  left: -100px; top: -120px;
+  animation-duration: 15s;
+}
+.animated-bg-blobs .blob2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #ffcb64 70%, #ffa200 100%);
+  right: -120px; top: 22%;
+  animation-duration: 19s;
+  animation-delay: 0.5s;
+}
+.animated-bg-blobs .blob3 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #80ffd3 65%, #19d1a7 100%);
+  left: 11%; bottom: -170px;
+  animation-duration: 25s;
+  animation-delay: .7s;
+}
+.animated-bg-blobs .blob4 {
+  width: 290px; height: 290px;
+  background: radial-gradient(circle, #f441a5 70%, #ef43b8 100%);
+  right: 10%; bottom: -90px;
+  opacity: 0.25;
+  animation-duration: 26s;
+  animation-delay: 1.5s;
+}
+
+@keyframes moveBlob {
+  0%,100% { transform: translateY(0) scale(1.06);}
+  35% { transform: translateY(-28px) scale(1.16);}
+  55% { transform: translateY(24px) scale(0.98);}
+  82% { transform: translateY(14px) scale(1.11);}
+}
+
+/* --- Wavy reflection --- */
+.animated-bg-waves {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 120px;
+  pointer-events: none;
+  z-index: 0;
+}
+.animated-bg-waves svg {
+  display: block;
+  width: 100vw;
+  height: 120px;
+  opacity: 0.14;
+  filter: blur(2px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* ---------------------------
+   TERMINAL GRID
+----------------------------*/
+.terminal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.terminal {
+  background: #eaf3ff;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  transition: .3s;
+  box-shadow: 0 2px 12px 0 #77dcff20;
+  filter: drop-shadow(0 1px 8px #85e1ff28);
+  position: relative;
+}
+.terminal:hover {
+  background: linear-gradient(90deg, #4fc3f7 70%, #ffa200 98%);
+  color: white;
+  transform: scale(1.09) rotate(-2deg);
+  box-shadow: 0 8px 28px #4fc3f766;
+  filter: drop-shadow(0 8px 18px #54e1ff55);
+  cursor: pointer;
+}
+.terminal::after {
+  content: "";
+  position: absolute;
+  bottom: -14px; right: -14px;
+  width: 35px; height: 35px;
+  background: url('https://img.icons8.com/color/48/000000/dock.png') no-repeat center/contain;
+  opacity: 0.20;
+  pointer-events: none;
+}
+/* Soft Water Background Image */
+
+
+
+/* ---------------------------
+   PAGE TITLE
+----------------------------*/
+h1 {
+  text-align: center;
+  margin: 40px 0 20px 0;
+  font-weight: 900;
+  color: #13346d;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 16px #b9e3fa80, 0 4px 32px #72d7d720;
+}
+h1:after {
+  content: "";
+  display: block;
+  margin: 12px auto 0 auto;
+  width: 90px; height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4fc3f7 40%, #ffa200 100%);
+  opacity: 0.92;
+}
+
+.back-link {
+  font-size: 18px;
+  color: #134ae3;
+  text-decoration: none;
+}
+
+/* ---------------------------
+   SIDEBAR + MAP
+----------------------------*/
+.main-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 35px;
+  gap: 40px;
+}
+
+.sidebar {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 24px;
+  width: 260px;
+  border-radius: 18px;
+  box-shadow: 0 5px 38px 0 #197ccd14, 0 2px 8px #aee9fc33;
+}
+
+label { font-weight: 600; margin-top: 15px; }
+
+select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1.5px solid #b2d9ff;
+  font-size: 1rem;
+  background: #f7fbff;
+  font-weight: 600;
+  box-shadow: 0 2px 7px #e4f3ff22 inset;
+}
+
+button {
+  background: linear-gradient(87deg, #2e8ef1 70%, #4fc3f7 100%);
+  color: white;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none;
+  transition: background .25s, box-shadow .29s, transform .20s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #ffa200 40%, #1a73e8 90%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.map-outer {
+  width: 380px;
+  background: rgba(255,255,255,0.94);
+  border-radius: 16px;
+  box-shadow: 0 4px 26px #5bd0fd16;
+  padding: 10px;
+}
+
+#map {
+  width: 100%;
+  height: 260px;
+  border-radius: 13px;
+  box-shadow: 0 2px 18px 0 #197ccd15, 0 1px 6px #aee9fc1a;
+  border: 1.5px solid #b9eaff99;
+}
+
+/* ROUTE LIST */
+.route-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .terminal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .main-flex { flex-direction: column; gap: 28px; }
+  .map-outer, .sidebar { width: 94vw; }
+}
+@media (max-width: 700px) {
+  .terminal-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 95vw;
+  }
+}

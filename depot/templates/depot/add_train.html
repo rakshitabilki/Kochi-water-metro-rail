@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Add Trainset</title>
+  <link rel="stylesheet" href="{% static 'depot/css/add_train.css' %}">
+</head>
+<body>
+ <div class="trainset-card">
+    <a href="{% url 'depot:dashboard' %}" class="back-link">← Back to Dashboard</a>
+
+    <h1>Add Trainset</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Trainset & Continue to Fitness</button>
+    </form>
+</div>
+
+</body>
+</html>

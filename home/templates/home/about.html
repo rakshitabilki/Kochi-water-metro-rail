@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Kochi Water Metro</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/about.css' %}">
+</head>
+ <a href="{% url 'home:index' %}" class="btn">← Back to Home</a>
+<!-- ⭐ FIXED: Added class="about-page" -->
+<body class="about-page">
+
+<header class="about-hero">
+    <div class="about-hero-inner">
+        <h1>About Kochi Water Metro</h1>
+        <p>Connecting Islands • Empowering Communities • Greener Transport</p>
+    </div>
+</header>
+
+<main class="about-main">
+
+    <div class="about-content">
+        <p>
+            Kochi, often referred as the commercial capital of Kerala, is one of the most densely 
+            populated districts in the state. The Water Metro project reduces pollution and traffic 
+            congestion while improving connectivity between the mainland and island communities.
+        </p>
+
+        <p>
+            The project plans 15 routes, 38 terminals, and 78 eco-friendly hybrid electric ferries 
+            covering 78 km. Over 33,000 island residents are expected to benefit, making the Water 
+            Metro one of India’s most people-focused urban transport initiatives.
+        </p>
+
+        <p>
+            It is designed as a socially inclusive transport system, improving livelihoods through 
+            tourism, commercial development, and seamless public mobility.
+        </p>
+
+       
+    </div>
+
+    <div class="about-img-wrapper">
+        <img src="https://irisholidays.com/keralatourism/wp-content/uploads/2025/04/kochi-water-metro-1.jpg" 
+             alt="Kochi Water Metro">
+    </div>
+    <!-- =============================
+     SECTION: Waterways & Routes
+     ============================= -->
+<section class="routes-section">
+<div class="routes-header">
+        <div class="routes-full-line"></div>
+
+        <span class="routes-line"></span>
+        <h2>WATERWAYS AND IDENTIFIED ROUTES</h2>
+    </div>
+    <div class="routes-content">
+        <p>
+            The project aims to use the inland waterways in and around Kochi, with major routes 
+            spanning National Waterways, Cochin Port Trust Waters, and existing inland channels. 
+            The project consists of fifteen (15) identified routes connecting thirty-eight (38) 
+            jetties across ten (10) island communities and two boatyards.
+        </p>
+
+        <p>
+            The total length of these 15 routes is 76.2 km. Minor dredging is required in 
+            selective zones, while the main navigation channels remain largely navigable. 
+            The project integrates navigation buoys, night navigation assistance, and 
+            environmental measures such as floating waste management.
+        </p>
+
+        <p>
+            Below is the route sketch and one of the operational boats under this system:
+        </p>
+
+        <div class="routes-images">
+            <img src="https://media.assettype.com/tnm/import/sites/default/files/kochi-water-metro-750.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true" alt="Route Map">
+            <img src="https://static.theprint.in/wp-content/uploads/2025/09/KWM1.jpg" alt="Water Metro Boat">
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+<footer>
+    <p style="text-align:center; margin-top:35px; color:#1a2a40;">© 2025 Kochi Water Metro</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kochi Water Metro Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{% static 'depot/css/dashboard.css' %}" />
+ <style>
+    /* ========== Navigation Bar ========== */
+    nav {
+      background-color: #004a8f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      color: #45a895;
+    }
+
+    .logout-btn {
+      background: #45a895;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #2e6c5c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Top Navigation Bar -->
+  <nav>
+    <div class="logo">🚆 Kochi Water Metro Admin</div>
+    <div class="nav-links">
+<a href="{% url 'depot:induction_schedule' %}">Schedule</a>
+      <a href="{% url 'depot:add_train' %}">Add Train</a>
+      <form method="post" action="{% url 'accounts:logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </div>
+  </nav>
+
+ 
+
+  <div class="dashboard" id="dashboard">
+    <h1>Kochi Water Metro Information</h1>
+    <div class="grid">
+
+      <!-- Fitness Certificate -->
+      <div class="card" title="Fitness Certificate">
+        <a href="{% url 'depot:fitness' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#20589a" stroke-width="2" fill="url(#grad1)">
+                <animate attributeName="r" values="30;28;30" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <path d="M20 38l6 6 18-24" stroke="#45a895" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <animate attributeName="stroke" values="#45a895;#2176c7;#45a895" dur="4s" repeatCount="indefinite"/>
+              </path>
+            </svg>
+          </div>
+          <h2>Fitness Certificate</h2>
+          <p>Indicates the vessel's compliance with safety and operational standards, ensuring passenger security.</p>
+        </a>
+      </div>
+
+      <!-- Job Card Status -->
+      <div class="card" title="Job Card Status">
+        <a href="{% url 'depot:job_card_status' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#45a895" stroke-width="2" fill="url(#grad2)">
+                <animate attributeName="r" values="30;32;30" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+              <g stroke="#20589a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="22" cy="32" r="6"/>
+                <circle cx="42" cy="32" r="6"/>
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                  from="0 22 32" to="360 22 32" dur="8s" repeatCount="indefinite"/>
+                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                  from="360 42 32" to="0 42 32" dur="8s" repeatCount="indefinite"/>
+              </g>
+            </svg>
+          </div>
+          <h2>Job Card Status</h2>
+          <p>Tracks operational assignments and responsibilities for smooth fleet operation.</p>
+        </a>
+      </div>
+
+      <!-- Branding Priority -->
+      <div class="card" title="Branding Priority">
+        <a href="{% url 'depot:branding' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="#45a895" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="16" fill="#c3e2ff"/>
+              <path stroke="#2176c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M32 10L32 54M10 32L54 32"/>
+              <circle cx="16" cy="16" r="4" fill="#45a895">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="48" cy="48" r="5" fill="#2176c7">
+                <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <h2>Branding Priority</h2>
+          <p>Vessels display unified branding for clear identification and consistent travel experience.</p>
+        </a>
+      </div>
+
+      <!-- Mileage Galaxy -->
+      <div class="card" title="Mileage Galaxy">
+        <a href="{% url 'depot:mileage' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="#45a895" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="16" fill="#c3e2ff"/>
+              <path stroke="#2176c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M32 10L32 54M10 32L54 32"/>
+              <circle cx="16" cy="16" r="4" fill="#45a895">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="48" cy="48" r="5" fill="#2176c7">
+                <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <h2>Mileage Galaxy</h2>
+          <p>Electric boats are designed for excellent fuel efficiency, reducing environmental impact.</p>
+        </a>
+      </div>
+
+      <!-- Cleaning & Detailing Slot -->
+      <div class="card" title="Cleaning & Detailing Slot">
+        <a href="{% url 'depot:cleaning' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="#45a895" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="16" fill="#c3e2ff"/>
+              <path stroke="#2176c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M32 10L32 54M10 32L54 32"/>
+              <circle cx="16" cy="16" r="4" fill="#45a895">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="48" cy="48" r="5" fill="#2176c7">
+                <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <h2>Cleaning & Detailing Slot</h2>
+          <p>Dedicated slots for vessel cleaning and detailing uphold high hygiene standards on every commute.</p>
+        </a>
+      </div>
+
+      <!-- Stabling Geometry -->
+      <div class="card" title="Stabling Geometry">
+        <a href="{% url 'depot:geometry' %}" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+          <div class="icon-container">
+            <svg viewBox="0 0 64 64" fill="#45a895" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="16" fill="#c3e2ff"/>
+              <path stroke="#2176c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M32 10L32 54M10 32L54 32"/>
+              <circle cx="16" cy="16" r="4" fill="#45a895">
+                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="48" cy="48" r="5" fill="#2176c7">
+                <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+          </div>
+          <h2>Stabling Geometry</h2>
+          <p>Special docking systems ensure boats are safely stabilized and efficiently moored at terminals.</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

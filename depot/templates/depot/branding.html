@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Branding Priority Vessels - Kochi Water Metro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'depot/css/branding.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <a href="{% url 'depot:dashboard' %}" class="back-btn">⬅ Back to Dashboard</a>
+        <h1>Branding Priority Vessels - Kochi Water Metro</h1>
+    </header>
+
+    <section class="branding-info fade-in">
+        <p>
+            Branding Priority vessels display unified branding for clear identification and passenger experience.
+        </p>
+    </section>
+
+    <!-- Your Animated Table Section -->
+    <section class="boat-table-section fade-in" aria-label="Branding vessel table">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Boat Number</th>
+                    <th>Boat Name</th>
+                    <th>Brand</th>
+                    <th>Required month</th>
+                    <th>Achieved month</th>
+                </tr>
+            </thead>
+
+            <tbody id="brandingTableBody">
+                <!-- Branding.js will insert table rows here -->
+            </tbody>
+
+        </table>
+    </section>
+
+    <script>
+      console.log("Branding JS Loaded");
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const tbody = document.getElementById("brandingTableBody");
+    console.log("tbody =", tbody);
+
+    if (!tbody) {
+        console.error("ERROR: brandingTableBody NOT FOUND!");
+        return;
+    }
+
+    try {
+        const response = await fetch("/depot/api/branding/");
+        const data = await response.json();
+
+        console.log("API Response:", data);
+
+        const list = data.branding || [];
+
+        if (list.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5">No Branding Records Found</td></tr>`;
+            return;
+        }
+
+        list.forEach(item => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${item.train_number}</td>
+                <td>${item.train_name || "-"}</td>
+                <td>${item.brand}</td>
+                <td>${item.required} </td>
+                <td>${item.achieved} </td>
+            `;
+
+            tbody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("Branding API Error:", error);
+    }
+});
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+/* ----------------------------
+   Elegant Fitness Dashboard
+   Fully Responsive & No Scroll
+-----------------------------*/
+
+body {
+  background: linear-gradient(135deg, #b8d8ff 0%, #dff7ff 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: #14375a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard h1 {
+  font-size: 2.4rem;
+  color: #0a3d7a;
+  margin-bottom: 15px;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #0a3d7a;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* ----------------------------
+   GRID – AUTO FIT PERFECTLY
+-----------------------------*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ----------------------------
+   CARD DESIGN
+-----------------------------*/
+.card {
+  background: linear-gradient(135deg, #ffffff 0%, #d8ebff 70%);
+  border-left: 10px solid #1767b1;
+  border-radius: 16px;
+  padding: 18px 16px;
+  box-shadow: 0 5px 16px rgba(23,103,177,0.25);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Alternate color cards */
+.card:nth-child(even) {
+  background: linear-gradient(135deg, #fff1f4 0%, #e2fff1 100%);
+  border-left: 10px solid #1aa37a;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+}
+
+/* ----------------------------
+   CONTENT STYLING
+-----------------------------*/
+.card h2 {
+  font-size: 1.3rem;
+  margin: 10px 0;
+  color: #084c8e;
+}
+
+.card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #1d404d;
+}
+
+/* Status text */
+.status-valid {
+  color: #1aa37a;
+  font-weight: bold;
+}
+.status-expired {
+  color: #d62828;
+  font-weight: bold;
+}
+
+/* Icon */
+.icon-container {
+  width: 65px;
+  height: 65px;
+  margin: 8px auto 12px;
+}
+.icon-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Fade animation */
+.card {
+  animation: fadeInUp 0.5s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

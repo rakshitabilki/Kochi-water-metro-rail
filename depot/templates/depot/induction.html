@@ -1,0 +1,63 @@
+<!-- depot/templates/depot/induction.html -->
+{% extends "depot/base.html" %}
+{% load static %}
+{% block content %}
+<h2>Nightly Induction Planner</h2>
+
+<form id="save-run" method="post" action="#">
+  {% csrf_token %}
+  <!-- You can implement saving the entire ranked_json via AJAX if desired -->
+</form>
+
+<table class="table table-bordered table-hover mt-3">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Train</th>
+      <th>Eligible</th>
+      <th>Reasons</th>
+      <th>Mileage</th>
+      <th>Brand Shortfall</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in candidates %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ item.train.number }}</td>
+      <td>
+        {% if item.eligible %}
+          <span class="badge bg-success">Yes</span>
+        {% else %}
+          <span class="badge bg-danger">No</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if item.reasons %}
+          <ul>
+            {% for r in item.reasons %}
+              <li>{{ r }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          —
+        {% endif %}
+      </td>
+      <td>{{ item.train.cumulative_mileage|default:"0" }}</td>
+      <td>{{ item.branding_shortfall }}</td>
+      <td>
+        <form method="post" action="{% url 'depot:override' item.train.id %}">
+          {% csrf_token %}
+          <input type="hidden" name="reason" value="Manual override by {{ user.username }}">
+          <button class="btn btn-sm btn-primary" name="action" value="service">Service</button>
+          <button class="btn btn-sm btn-secondary" name="action" value="standby">Standby</button>
+          <button class="btn btn-sm btn-danger" name="action" value="ibl">Send to IBL</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

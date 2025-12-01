@@ -1,0 +1,112 @@
+/* ---------------------------------------------------
+   Page Background
+----------------------------------------------------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #93d8ff, #d6f7ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+/* ---------------------------------------------------
+   Smaller White Card
+----------------------------------------------------*/
+.trainset-card {
+    background: rgba(255, 255, 255, 0.95);
+    width: 42%;                       /* ⬅️ REDUCED SIZE */
+    max-width: 520px;                 /* ⬅️ Much smaller */
+    padding: 28px 28px 35px 28px;     /* ⬅️ Reduced padding */
+    border-radius: 18px;
+    box-shadow: 0px 14px 28px rgba(0, 90, 150, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+/* ---------------------------------------------------
+   Back Link
+----------------------------------------------------*/
+.back-link {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-size: 14px;                  /* smaller */
+    font-weight: 600;
+    color: #0047b3;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #ff8800;
+}
+
+/* ---------------------------------------------------
+   Title
+----------------------------------------------------*/
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    font-size: 1.55rem;               /* smaller heading */
+    font-weight: 800;
+    color: #004a80;
+}
+
+h1::after {
+    content: "";
+    width: 60px;                      /* smaller underline */
+    height: 3px;
+    background: linear-gradient(90deg, #1a73e8, #00bdfd);
+    border-radius: 3px;
+    display: block;
+    margin: 8px auto 0;
+}
+
+/* ---------------------------------------------------
+   Form Layout
+----------------------------------------------------*/
+label {
+    font-size: 13px;                  /* smaller */
+    font-weight: 700;
+    color: #003d66;
+    margin-top: 13px;
+    margin-bottom: 3px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px 10px;                /* smaller input height */
+    font-size: 0.9rem;                /* smaller text */
+    border: 1.5px solid #b6dfff;
+    border-radius: 8px;               /* smaller corners */
+    background: #f3f9ff;
+    transition: 0.3s ease;
+}
+
+textarea {
+    height: 75px;                     /* reduced height */
+}
+
+/* ---------------------------------------------------
+   Submit Button
+----------------------------------------------------*/
+button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px;                    /* smaller button */
+    font-size: 0.95rem;               /* smaller text */
+    font-weight: bold;
+    background: linear-gradient(90deg, #1a73e8, #0057c8);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ffa200, #1a73e8);
+    transform: translateY(-2px);
+}

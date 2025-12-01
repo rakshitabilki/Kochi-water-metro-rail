@@ -1,0 +1,153 @@
+/* Fade-in body animation */
+body {
+  animation: fadeInBody 2s ease forwards;
+  background: linear-gradient(135deg, #c3e2ff 0%, #e2f7e1 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #1d4b7c;
+}
+
+@keyframes fadeInBody {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* Header animation */
+header h1 {
+  animation: bounceAnim 1.8s infinite alternate ease-in-out;
+  color: #2158a9;
+  text-shadow: 0 0 8px #2176c7aa;
+}
+@keyframes bounceAnim {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #2158a9;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 15px;
+  transition: background 0.3s;
+}
+.back-btn:hover {
+  background: #163b73;
+}
+
+/* Info text */
+.branding-info p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #2c3e50;
+  text-shadow: 0 0 4px #45a89588;
+}
+
+/* Table container */
+.boat-table-section {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  box-shadow: 0 10px 30px rgba(32, 88, 154, 0.25);
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f0fcff, #d8f9eb);
+  padding: 15px;
+  overflow-x: auto;
+  border: 2px solid #2176c7;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  font-size: 1.05rem;
+  font-weight: 600;
+  box-shadow: 0 0 12px #2176c7aa inset;
+}
+
+thead {
+  background: #2176c7;
+  color: white;
+}
+
+thead th {
+  padding: 18px 25px;
+  text-align: left;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 3px solid #45a895ff;
+}
+
+tbody tr {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+tbody tr:hover {
+  background-color: #c3e2ff88;
+  transform: scale(1.02);
+  box-shadow: 0 8px 15px #2176c7aa;
+}
+
+/* Table cells */
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #a5d6ff;
+  vertical-align: middle;
+}
+
+/* Status cell */
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-text {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* Valid row */
+.valid-row {
+  background: #e6f9f3;
+  color: #145a3d;
+}
+.valid-row .status-text {
+  color: #45a895;
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 12px #45a895cc; }
+  50% { text-shadow: 0 0 24px #2176c7cc; }
+}
+
+/* Expired row */
+.expired-row {
+  background: #ffe6e6;
+  color: #6b1b1b;
+}
+.expired-row .status-text {
+  color: #d62828;
+  animation: pulseGlowRed 2.5s infinite;
+}
+
+@keyframes pulseGlowRed {
+  0%, 100% { text-shadow: 0 0 18px #d62828cc; }
+  50% { text-shadow: 0 0 36px #f77f00cc; }
+}
+
+/* Icons */
+.status-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}

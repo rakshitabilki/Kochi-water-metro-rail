@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Fitness - {{ train.number }}</title></head>
+<body>
+  <link rel="stylesheet" href="{% static 'depot/css/detail.css' %}">
+
+  <a href="{% url 'depot:dashboard' %}">Back to Dashboard</a>
+  <h2>Fitness Certificate — {{ train.number }}</h2>
+
+  {% if cert %}
+    <div>
+      <strong>Current:</strong>
+      <p>Department: {{ cert.department }}</p>
+      <p>Valid From: {{ cert.valid_from }}</p>
+      <p>Valid To: {{ cert.valid_to }}</p>
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save & Continue → Job Card</button>
+  </form>
+
+  <hr>
+  <!-- navigation -->
+  <nav>
+    <a href="{% url 'depot:jobcard_detail' train.number %}">Job Card</a> |
+    <a href="{% url 'depot:branding_detail' train.number %}">Branding</a> |
+    <a href="{% url 'depot:mileage_detail' train.number %}">Mileage</a> |
+    <a href="{% url 'depot:cleaning_detail' train.number %}">Cleaning</a> |
+    <a href="{% url 'depot:geometry_detail' train.number %}">Geometry</a>
+  </nav>
+</body>
+</html>

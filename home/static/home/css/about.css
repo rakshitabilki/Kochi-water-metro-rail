@@ -1,0 +1,225 @@
+body.about-page {
+  background: #f6f8fb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  color: #1a2a40;
+}
+
+/* --- Banner / Hero Section --- */
+.about-hero {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    linear-gradient(120deg, rgba(20,90,140,0.7) 5%, rgba(29,201,190,0.7) 98%),
+    url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  /* Change the url to your own water/metro image if desired */
+}
+
+.about-hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 40px 40px 40px;
+  color: #fff;
+}
+
+.about-hero h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-shadow: 0 3px 18px rgba(24,60,120,0.18);
+}
+
+.about-hero p {
+  margin-top: 13px;
+  font-size: 1.17rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(24,60,120,0.10);
+}
+
+/* --- Content Area --- */
+.about-main {
+  max-width: 1200px;
+  margin: -50px auto 0 auto;
+  display: flex;
+  gap: 38px;
+  background: #fff;
+  padding: 38px 36px;
+  border-radius: 18px;
+  box-shadow: 0 5px 40px 0 rgb(30 60 90 / 13%);
+  position: relative;
+  z-index: 2;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  flex: 1 1 320px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #21334e;
+  min-width: 260px;
+}
+
+.about-img-wrapper {
+  flex: 1 1 320px;
+  min-width: 290px;
+  max-width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img-wrapper img {
+  width: 100%;
+  max-width: 420px;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 13px;
+  box-shadow: 0 4px 20px rgba(34,104,150,0.18);
+  border: 1.5px solid #e7faff;
+}
+/* Increase About Page Image Height */
+.about-image img {
+    width: 100%;
+    height: 340px;     /* ⬅ Increase this value */
+    object-fit: cover; /* Keeps image neat without distortion */
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* =============================
+   Improved Routes Section
+   ============================= */
+
+/* FULL-WIDTH Routes Section */
+.routes-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 60px 0;
+
+  /* Remove rounded edges & remove center limits */
+  border-radius: 0;
+  box-shadow: none;
+
+  animation: fadeUp 1s ease;
+}
+
+
+/* Vibrant Line + Centered Title */
+.routes-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.routes-header .routes-line {
+  display: block;
+  width: 110px;
+  height: 6px;
+  margin: 0 auto 12px auto;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4fc3f7, #2e8ef1, #ffa200);
+  box-shadow: 0 3px 10px rgba(79,195,247,0.45);
+}
+
+/* FULL-WIDTH Vibrant Line */
+.routes-full-line {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #2e8ef1, #4fc3f7, #ffa200);
+  margin: 0 0 22px 0;
+  box-shadow: 0 3px 10px rgba(79,195,247,0.45);
+}
+
+/* Updated Heading Style */
+.routes-header h2 {
+  text-align: center;
+  font-size: 1.85rem;      /* smaller and neat */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #0b2042;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+/* Ensure spacing for header container */
+.routes-header {
+  padding: 0 30px;
+  max-width: 1100px;
+  margin: 0 auto 20px auto;
+}
+
+.routes-section .routes-content,
+.routes-section .routes-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px;   /* IMPORTANT: makes it clean on smaller screens */
+}
+
+/* Elegant text formatting */
+.routes-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.routes-content p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #2d3f52;
+  margin-bottom: 22px;
+  letter-spacing: 0.3px;
+}
+
+/* Smaller images with better presentation */
+.routes-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.routes-images img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s;
+  object-fit: contain;
+  height: 260px;   /* Make images smaller */
+}
+
+.routes-images img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+}
+
+/* Smooth Scroll Animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 1000px) {
+  .about-main {
+    flex-direction: column;
+    padding: 26px 16px;
+    margin: -44px 6px 0 6px;
+  }
+  .about-hero-inner {
+    padding: 42px 22px 35px 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero h1 { font-size: 2.0rem; }
+  .about-main { padding: 16px 4vw; }
+  .about-img-wrapper img { max-width: 95vw; }
+}

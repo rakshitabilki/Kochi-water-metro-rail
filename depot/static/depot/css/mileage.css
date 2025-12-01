@@ -1,0 +1,150 @@
+/* ---------------------------------------------------
+   GLOBAL PAGE
+--------------------------------------------------- */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #1d3557;
+  background: linear-gradient(135deg, #d9e8ff 0%, #e7fff0 100%);
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* ---------------------------------------------------
+   BACK BUTTON
+--------------------------------------------------- */
+.back-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #1d4e89;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #123766;
+}
+
+
+/* ---------------------------------------------------
+   PAGE TITLE + INFO
+--------------------------------------------------- */
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #133b63;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.branding-info p {
+  text-align: center;
+  font-size: 1.1rem;
+  max-width: 750px;
+  margin: 0 auto 25px;
+  color: #2d4a63;
+}
+
+
+/* ---------------------------------------------------
+   TABLE CONTAINER
+--------------------------------------------------- */
+.boat-table-section {
+  max-width: 1000px;
+  margin: auto;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #d0e4ff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  overflow-x: auto;
+}
+
+
+/* ---------------------------------------------------
+   TABLE STYLING
+--------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+thead {
+  background: #1d4e89;
+  color: white;
+}
+
+thead th {
+  padding: 14px 14px;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.03rem;
+}
+
+tbody tr {
+  background: white;
+  transition: 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #e9f3ff;
+}
+
+td {
+  padding: 14px 14px;
+  border-bottom: 1px solid #cfd8e0;
+}
+
+
+/* ---------------------------------------------------
+   STATUS COLORS
+--------------------------------------------------- */
+.valid-row {
+  background: #e7fff5;
+}
+
+.expired-row {
+  background: #ffeaea;
+}
+
+.valid-row:hover {
+  background: #d9ffef;
+}
+
+.expired-row:hover {
+  background: #ffdede;
+}
+
+.status-text {
+  font-weight: 700;
+}
+
+.valid-row .status-text {
+  color: #1c9d64;
+}
+
+.expired-row .status-text {
+  color: #c53030;
+}
+
+
+/* ---------------------------------------------------
+   ICONS
+--------------------------------------------------- */
+.status-icon {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+}

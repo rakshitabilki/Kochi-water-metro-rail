@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boat Cleaning & Detailing Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'depot/css/cleaning.css' %}">
+</head>
+
+<body>
+  <header>
+    <a href="{% url 'depot:dashboard' %}" class="back-btn" title="Back to Dashboard">⬅ Back to Dashboard</a>
+    <h1>Branding Priority Vessels - Kochi Water Metro</h1>
+  </header>
+<h1>Boat Cleaning & Detailing Dashboard</h1>
+
+<div class="card-swiper-container">
+  <button id="prevBtn" class="swipe-btn" aria-label="Previous">&larr;</button>
+  <div id="boatDetails" class="details card-swiper"></div>
+  <button id="nextBtn" class="swipe-btn" aria-label="Next">&rarr;</button>
+</div>
+
+<h2>Cleaning & Detailing Slots</h2>
+
+<div id="slotsTableWrapper"></div>
+
+<!-- JS -->
+<script src="{% static 'depot/js/cleaning.js' %}"></script>
+
+</body>
+</html>

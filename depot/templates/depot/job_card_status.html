@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Card Status - Kochi Water Metro</title>
+
+  <link rel="stylesheet" href="{% static 'depot/css/jobcard.css' %}">
+</head>
+
+<body>
+
+  <header>
+    <h1>Job Card Status - Kochi Water Metro</h1>
+    <a href="{% url 'depot:dashboard' %}" class="back-btn">⬅ Back to Dashboard</a>
+  </header>
+
+  <main>
+    <!-- Dynamic job card grid -->
+    <div id="jobGrid" class="boats-grid"></div>
+  </main>
+
+  <!-- Your JS file -->
+  <script src="{% static 'depot/js/job_card_status.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+{% load static %}
+{% load time_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Induction Scheduler - Kochi Water Metro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'depot/css/scheduler.css' %}">
+</head>
+
+<body>
+
+<header class="header">
+    <a href="{% url 'depot:dashboard' %}" class="back-btn">⬅ Back to Dashboard</a>
+    <h1>AI Induction Scheduler – Plan</h1>
+    <p class="subtitle">Automatically ranked using 6 feature rules</p>
+</header>
+
+<div class="container fade-in">
+
+    {% if plan %}
+        <table id="scheduleTable" class="schedule-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Train Number</th>
+                    <th>Train Name</th>
+                    <th>Assigned Bay</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th onclick="sortTableByPriority()" style="cursor:pointer;">
+    Priority ▲▼
+</th>
+
+                    <th>Reasons</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in plan %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+
+                    <!-- Train Number -->
+                    <td>{{ item.train }}</td>
+
+                    <!-- Train Name -->
+                    <td>{{ item.train_name }}</td>
+
+                    <!-- Bay -->
+                    <td>{{ item.bay }}</td>
+
+                    <!-- Start Time -->
+                    <td>{{ item.start_min|format_time }}</td>
+
+                    <!-- End Time -->
+                    <td>{{ item.end_min|format_time }}</td>
+
+                    <!-- Priority -->
+                    <td>
+                        <span class="
+                            score-badge
+                            {% if item.priority > 0 %}
+                                score-positive
+                            {% elif item.priority == 0 %}
+                                score-neutral
+                            {% else %}
+                                score-negative
+                            {% endif %}
+                        ">
+                            {{ item.priority }}
+                        </span>
+                    </td>
+
+                    <!-- Reasons -->
+                    <td>
+                        <ul class="reason-list">
+                            {% for r in item.reasons %}
+                                <li>{{ r }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <p class="no-data">No plan available.</p>
+    {% endif %}
+
+</div>
+<script>
+function sortTableByPriority() {
+    let table = document.getElementById("scheduleTable");
+    let rows = Array.from(table.rows).slice(1);   // skip header row
+    let tbody = table.tBodies[0];
+
+    // Check current sort direction
+    let sortedAsc = table.getAttribute("data-sort") !== "desc";
+
+    rows.sort((a, b) => {
+        let aPriority = parseInt(a.cells[6].innerText.trim());
+        let bPriority = parseInt(b.cells[6].innerText.trim());
+
+        return sortedAsc ? aPriority - bPriority : bPriority - aPriority;
+    });
+
+    // Remove and re-add rows in sorted order
+    rows.forEach(row => tbody.appendChild(row));
+
+    // Toggle sorting direction
+    table.setAttribute("data-sort", sortedAsc ? "desc" : "asc");
+}
+</script>
+
+
+</body>
+</html>

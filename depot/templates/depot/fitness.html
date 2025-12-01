@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boat Fitness Dashboard - Kochi Water Metro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'depot/css/fitness.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Boat Fitness Dashboard</h1>
+        <a href="{% url 'depot:dashboard' %}" class="back-btn">Back to Main Dashboard</a>
+        <div class="grid" id="boatGrid">
+            <!-- Boat cards populated by JS -->
+        </div>
+    </div>
+    <script src="{% static 'depot/js/fitness.js' %}"></script>
+</body>
+</html>

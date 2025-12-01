@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kochi Water Metro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Main stylesheet (make sure this file exists at home/static/home/css/style.css) -->
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+    <!-- Favicon (make sure this file exists at home/static/home/images/favicon.ico) -->
+    <link rel="icon" href="{% static 'home/images/favicon.ico' %}">
+
+    <!-- Modal CSS (you can move this into your main stylesheet if you prefer) -->
+    <style>
+      /* Modal background */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.45);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.show { display: flex; }
+
+      /* Modal box */
+      .modal-content {
+        background: #fff;
+        width: min(760px, 95%);
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 22px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(12,30,50,0.15);
+        position: relative;
+      }
+
+      /* Close button */
+      .closeBtn {
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        border: none;
+        font-size: 26px;
+        background: transparent;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      /* Make stat boxes clickable look */
+      .stat-box { cursor: pointer; }
+      .stat-box:focus { outline: 3px solid rgba(11,75,166,0.18); outline-offset: 4px; }
+    </style>
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <img src="{% static 'home/images/kmrl.png' %}" alt="Kochi Water Metro Logo" height="40">
+        <span>Kochi Water Metro</span>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="{% url 'home:index' %}">Home</a></li>
+            <li><a href="{% url 'home:about' %}">About</a></li>
+            <li><a href="{% url 'home:journey' %}">Know Your Journey</a></li>
+        </ul>
+
+        <ul class="nav-links">
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Kochi Water Metro</h1>
+        <p>Innovative, eco-friendly water transportation connecting islands & the city.</p>
+    </div>
+</section>
+
+<!-- Stats: each box has data-title and data-info used by JS -->
+<section class="stats">
+    <div class="stat-box" data-title="Passengers" data-info="Kochi Water Metro has transported over 34,50,000 passengers using eco-friendly e-boats and modern safety practices.">
+        <h2>34,5,450+</h2>
+        <span>Passengers</span>
+    </div>
+
+    <div class="stat-box" data-title="E-Boats" data-info="16+ electric boats operate with efficient charging and safety systems to provide quiet, emission-free transport.">
+        <h2>16+</h2>
+        <span>E-Boats</span>
+    </div>
+
+    <div class="stat-box" data-title="Terminals" data-info="10+ terminals connect islands and city routes — each terminal is equipped with boarding facilities and passenger information systems.">
+        <h2>10+</h2>
+        <span>Terminals</span>
+    </div>
+
+    <div class="stat-box" data-title="Kilometres" data-info="75+ kilometres of routes run across the backwaters and coastal areas, improving connectivity and reducing road congestion.">
+        <h2>75+</h2>
+        <span>Kilometres</span>
+    </div>
+</section>
+
+<!-- Modal markup (placed before footer) -->
+<div id="infoModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="modal-content" role="document">
+    <button class="closeBtn" aria-label="Close modal">&times;</button>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </div>
+</div>
+
+<footer>
+    <div>
+        <p>Contact: ‪+91 7511165656‬ | Email: customercare@watermetro.co.in</p>
+        <p>© 2025 Kochi Water Metro</p>
+    </div>
+</footer>
+
+<!-- Main javascript (ensure exists at home/static/home/js/main.js) -->
+<script src="{% static 'home/js/main.js' %}"></script>
+
+<!-- Inline script to enable stat-box modal behaviour.
+     You can move this into home/static/home/js/main.js if you prefer. -->
+<script>
+(function(){
+  const modal = document.getElementById('infoModal');
+  const titleEl = document.getElementById('modalTitle');
+  const textEl  = document.getElementById('modalText');
+  const closeBtn = modal.querySelector('.closeBtn');
+
+  function openModal(title, text){
+    titleEl.textContent = title || '';
+    textEl.textContent  = text || '';
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    // focus close button for keyboard users
+    closeBtn.focus();
+  }
+
+  function closeModal(){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  // Attach click + keyboard handlers to each .stat-box
+  document.querySelectorAll('.stat-box').forEach(box => {
+    // ensure focusable for keyboard navigation
+    if (!box.hasAttribute('tabindex')) box.setAttribute('tabindex','0');
+
+    box.addEventListener('click', () => {
+      openModal(box.getAttribute('data-title'), box.getAttribute('data-info'));
+    });
+
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(box.getAttribute('data-title'), box.getAttribute('data-info'));
+      }
+    });
+  });
+
+  // Close handlers
+  closeBtn.addEventListener('click', closeModal);
+
+  // Click outside content closes
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Esc key closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  });
+})();
+</script>
+</body>
+</html>
