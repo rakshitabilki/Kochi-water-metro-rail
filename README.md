@@ -54,15 +54,6 @@ Database Management
 
 🚀 Installation & Setup
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/your-repository-name.git
-
-# Navigate into the folder
-cd your-repository-name
-
-# Install dependencies (if Python project)
-pip install -r requirements.txt
-
 # Run the application
 python app.py
 ```
