@@ -65,8 +65,9 @@ pip install -r requirements.txt
 
 # Run the application
 python app.py
-📊 Future Enhancements
 ```
+
+📊 Future Enhancements
 AI-based demand prediction
 
 Live GPS tracking integration
